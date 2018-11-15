@@ -97,10 +97,10 @@ public class World {
                     if (grid[newX][newY] == null) {
                         grid[newX][newY] = creature;
                         grid[x][y] = null;
-                    } else {
+                    } else {//Space is un use
                         // Same gender fight
                         if (grid[newX][newY].gender == creature.gender) {
-                            // The attacked wins on draws
+                            // The attacker wins on draws
                             if (creature.life - creature.age >= grid[newX][newY].life - grid[newX][newY].age) {
                                 grid[newX][newY] = creature;
                                 grid[x][y] = null;
@@ -110,7 +110,7 @@ public class World {
                             }
 
                         } else { //Different gender try to reproduce
-                            // The "Other" always get the creature egg/spawn (a weird specie indeed)
+                            // The "Other" always get the creature egg/spawn (a weird specie of monster indeed)
                             if (grid[newX][newY].child == null) {
                                 int averageLife = (int) ((creature.life + grid[newX][newY].life) * .5);
                                 if (range(2, 8) == 5) // Mutate child sometimes
